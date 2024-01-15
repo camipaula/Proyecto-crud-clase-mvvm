@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProductosMVVMtc.Views.ProductoPage"
+             Title="ProductoPage" Background="AliceBlue">
+    
+    <VerticalStackLayout>
+        <HorizontalStackLayout
+            BackgroundColor="LightPink"
+            HeightRequest="100">
+            <Image
+                Source="dotnet_bot.png"
+                HeightRequest="50"
+                WidthRequest="100"
+                />
+            <Label 
+                x:Name="Username"
+                Text="Productos"
+                FontSize="40"
+                TextColor="White"
+                VerticalOptions="Center" 
+                HorizontalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <ScrollView HeightRequest="500">
+        <ListView x:Name="listaProductos"
+                  RowHeight="80"
+                  Margin="0,30,0,0"
+                  ItemsSource="{Binding ListaProductos}"
+                  ItemSelected="detalleLista">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal">
+                            <Image Source="dotnet_bot.png"
+                                   HeightRequest="50"
+                                   WidthRequest="100"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label
+                                    Text="{Binding Nombre}"
+                                    VerticalOptions="Start"
+                                    FontSize="20"/>
+                                <Label
+                                    Text="{Binding Cantidad}"
+                                    VerticalOptions="End"
+                                    FontSize="20"/>
+                            </StackLayout>
+                        </StackLayout>
+
+                    </ViewCell>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+
+        </ListView>
+        </ScrollView>
+
+     <Button
+     Text="Nuevo Producto"
+     FontSize="20"
+     HorizontalOptions="Fill"
+     BackgroundColor="Salmon"
+     Command="{Binding CrearProducto}"/>
+
+    </VerticalStackLayout>
+</ContentPage>
